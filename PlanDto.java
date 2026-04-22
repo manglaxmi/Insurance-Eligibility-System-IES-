@@ -1,0 +1,52 @@
+package com.IES.dto;
+
+import java.time.LocalDate;
+
+import lombok.Data;
+
+@Data
+public class PlanDto {
+
+    private Integer planId;
+    private String planName;
+    private LocalDate planStartDate;
+    private LocalDate planEndDate;
+    private String activeSw; // Y or N
+    private String comments;
+	public Integer getPlanId() {
+		return planId;
+	}
+	public void setPlanId(Integer planId) {
+		this.planId = planId;
+	}
+	public String getPlanName() {
+		return planName;
+	}
+	public void setPlanName(String planName) {
+		this.planName = planName;
+	}
+	public LocalDate getPlanStartDate() {
+		return planStartDate;
+	}
+	public void setPlanStartDate(LocalDate planStartDate) {
+		this.planStartDate = planStartDate;
+	}
+	public LocalDate getPlanEndDate() {
+		return planEndDate;
+	}
+	public void setPlanEndDate(LocalDate planEndDate) {
+		this.planEndDate = planEndDate;
+	}
+	public String getActiveSw() {
+		return activeSw;
+	}
+	public void setActiveSw(String activeSw) {
+		this.activeSw = activeSw;
+	}
+	public String getComments() {
+		return comments;
+	}
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+}

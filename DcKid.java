@@ -1,0 +1,81 @@
+package com.IES.entity;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
+import lombok.*;
+
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "dc_kids_tbl")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class DcKid {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "kid_id")
+    private Integer kidId;
+
+    @NotBlank
+    @Size(min = 2, max = 50)
+    @Column(name = "kid_name", nullable = false)
+    private String kidName;
+
+    @Past
+    @Column(name = "kid_dob", nullable = false)
+    private LocalDate kidDob;
+
+    @Column(name = "kid_ssn", unique = true, nullable = false)
+    private Long kidSsn;
+
+    // Many kids belong to one CitizenApplication
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "app_number", nullable = false)
+    private CitizenApplication citizenApplication;
+
+	public Integer getKidId() {
+		return kidId;
+	}
+
+	public void setKidId(Integer kidId) {
+		this.kidId = kidId;
+	}
+
+	public String getKidName() {
+		return kidName;
+	}
+
+	public void setKidName(String kidName) {
+		this.kidName = kidName;
+	}
+
+	public LocalDate getKidDob() {
+		return kidDob;
+	}
+
+	public void setKidDob(LocalDate kidDob) {
+		this.kidDob = kidDob;
+	}
+
+	public Long getKidSsn() {
+		return kidSsn;
+	}
+
+	public void setKidSsn(Long kidSsn) {
+		this.kidSsn = kidSsn;
+	}
+
+	public CitizenApplication getCitizenApplication() {
+		return citizenApplication;
+	}
+
+	public void setCitizenApplication(CitizenApplication citizenApplication) {
+		this.citizenApplication = citizenApplication;
+	}
+
+    
+}
